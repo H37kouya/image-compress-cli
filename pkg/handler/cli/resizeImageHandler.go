@@ -2,7 +2,7 @@ package cli
 
 import (
 	"fmt"
-	"uu-circle-pic/pkg/infra"
+	"image-compress-cli/pkg/infra"
 )
 
 // ResizeImageHandler 画像のリサイズをする

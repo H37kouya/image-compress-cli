@@ -16,7 +16,7 @@ limitations under the License.
 package cmd
 
 import (
-	"uu-circle-pic/pkg/handler/cli"
+	"image-compress-cli/pkg/handler/cli"
 
 	"github.com/spf13/cobra"
 )

@@ -1,4 +1,4 @@
-module uu-circle-pic
+module image-compress-cli
 
 go 1.13
 
