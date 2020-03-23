@@ -1,8 +1,11 @@
 package infra
 
 import (
+	"image-compress-cli/pkg/domain/model"
+	"io/ioutil"
 	"os"
-	"uu-circle-pic/pkg/domain/model"
+	"path/filepath"
+	"strings"
 )
 
 // CreateNewFile ファイルの新規作成
@@ -17,17 +20,22 @@ func CreateNewFile(path string) *os.File {
 
 // GetFileListsFromStorages ファイルの一覧を作成
 func GetFileListsFromStorages(dir string) model.Files {
-	// path := "./" + strings.TrimLeft(dir, "/")
+	path := "./" + strings.TrimLeft(dir, "/")
 
-	// TODO: file一覧を作成
-	// TODO: model.Files型に詰める
+	// file一覧を作成
+	fileinfos, _ := ioutil.ReadDir(path)
+	// model.Files型に詰める
 	files := make([]model.File, 0)
-	file := model.File{
-		Name:      "example",
-		Extension: "jpg",
-	}
+	for _, f := range fileinfos {
+		fileName := f.Name()
+		ext := strings.TrimLeft(filepath.Ext(fileName), ".")
 
-	files = append(files, file)
+		file := model.File{
+			Name:      fileName,
+			Extension: ext,
+		}
+		files = append(files, file)
+	}
 
 	return files
 }

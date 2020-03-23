@@ -1,6 +1,6 @@
 package main
 
-import "uu-circle-pic/cmd"
+import "image-compress-cli/cmd"
 
 func main() {
 	cmd.Execute()
