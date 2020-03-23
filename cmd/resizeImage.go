@@ -32,11 +32,17 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		cli.ResizeImageHandler()
+		cli.ResizeImageHandler(cmd)
 	},
 }
 
 func init() {
+	// フラグの値をフラグ名で参照する場合
+	// 第1引数: フラグ名
+	// 第2引数: 短縮フラグ名（末尾が "P" の関数では短縮フラグを指定できる）
+	// 第3引数: デフォルト値
+	// 第4引数: 説明
+	resizeImageCmd.PersistentFlags().IntP("width", "w", 960, "画像の横幅")
 	rootCmd.AddCommand(resizeImageCmd)
 
 	// Here you will define your flags and configuration settings.

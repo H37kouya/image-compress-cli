@@ -4,6 +4,7 @@ go 1.13
 
 require (
 	github.com/disintegration/imaging v1.6.2
+	github.com/fatih/color v1.9.0
 	github.com/fsnotify/fsnotify v1.4.9 // indirect
 	github.com/mitchellh/go-homedir v1.1.0
 	github.com/mitchellh/mapstructure v1.2.2 // indirect
