@@ -21,11 +21,6 @@ func GetJpegFromStorages(filename string) image.Image {
 	return srcImage
 }
 
-// StoreJpegToStorages jpegを保存
-// func StoreJpegToStorages() {
-
-// }
-
 // ResizeJepgToStorages jpegをリサイズし新規ファイルに保存
 func ResizeJepgToStorages(srcImage image.Image, filename string, width, quality int) {
 	path := "./storages/" + strings.TrimLeft(filename, "/")
