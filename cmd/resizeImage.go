@@ -17,6 +17,8 @@ package cmd
 
 import (
 	"image-compress-cli/pkg/handler/cli"
+	"image-compress-cli/pkg/infra/persistence"
+	"image-compress-cli/pkg/usecase"
 
 	"github.com/spf13/cobra"
 )
@@ -32,7 +34,13 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		cli.ResizeImageHandler(cmd)
+		// DIをしたい
+		filePersistence := persistence.NewFilePersistence()
+		imagePersistence := persistence.NewImagePersistence()
+		imageUseCase := usecase.NewImageUseCase(filePersistence, imagePersistence)
+		imageHandler := cli.NewImageHandler(imageUseCase)
+
+		imageHandler.Index(cmd)
 	},
 }
 
