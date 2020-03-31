@@ -15,4 +15,5 @@
 # vendor/
 
 # Storage File
-storages/
+storages/*
+!storages/tests
