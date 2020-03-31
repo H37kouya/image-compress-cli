@@ -10,7 +10,6 @@ import (
 func TestGetFileListsFromStorages(t *testing.T) {
 	fp := di.InjectFilePersistence()
 	result := fp.GetFileListsFromStorages("../../../tests/storages/before")
-	println(result)
 	expect := model.Files{
 		model.File{
 			Extension:    "jpg",
