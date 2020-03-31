@@ -9,13 +9,13 @@ import (
 	"strings"
 )
 
-// FilePersistence File データの構造体
-type filePersistence struct{}
-
 // NewFilePersistence : File データに関する Persistence を生成
 func NewFilePersistence() repository.FileRepository {
 	return &filePersistence{}
 }
+
+// filePersistence File データの構造体
+type filePersistence struct{}
 
 // GetFileListsFromStorages ファイルの一覧を作成
 func (fp filePersistence) GetFileListsFromStorages(dir string) model.Files {
@@ -38,6 +38,7 @@ func convertToFile(dir string, f os.FileInfo) model.File {
 	ext := strings.TrimLeft(filepath.Ext(filename), ".")
 	extLowerCase := strings.ToLower(ext)
 	name := getFileNameWithoutExt(filename)
+	filename = name + "." + extLowerCase
 	path := strings.TrimRight(dir, "/") + "/" + filename
 
 	return model.File{
