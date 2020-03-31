@@ -16,4 +16,3 @@
 
 # Storage File
 storages/*
-!storages/tests
