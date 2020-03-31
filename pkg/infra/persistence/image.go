@@ -9,13 +9,13 @@ import (
 	"github.com/disintegration/imaging"
 )
 
-// ImagePersistence Image データの構造体
-type imagePersistence struct{}
-
 // NewImagePersistence : Image データに関する Persistence を生成
 func NewImagePersistence() repository.ImageRepository {
 	return &imagePersistence{}
 }
+
+// imagePersistence Image データの構造体
+type imagePersistence struct{}
 
 // ResizeImage 画像をリサイズする
 func (ip imagePersistence) ResizeImage(file model.File, newfilepath string, width, quality int) model.File {

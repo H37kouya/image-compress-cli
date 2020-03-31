@@ -15,4 +15,4 @@
 # vendor/
 
 # Storage File
-storages/
+storages/*
