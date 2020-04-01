@@ -15,6 +15,7 @@ func TestGetFileListsFromStoragesSuccess(t *testing.T) {
 	}
 	expect := model.Files{
 		model.File{
+			Dir:          "../../../tests/storages/before/",
 			Extension:    "gitkeep",
 			ExtLowerCase: "gitkeep",
 			FileName:     ".gitkeep",
@@ -22,6 +23,7 @@ func TestGetFileListsFromStoragesSuccess(t *testing.T) {
 			Path:         "../../../tests/storages/before/.gitkeep",
 		},
 		model.File{
+			Dir:          "../../../tests/storages/before/",
 			Extension:    "jpg",
 			ExtLowerCase: "jpg",
 			FileName:     "example1.jpg",
@@ -29,6 +31,7 @@ func TestGetFileListsFromStoragesSuccess(t *testing.T) {
 			Path:         "../../../tests/storages/before/example1.jpg",
 		},
 		model.File{
+			Dir:          "../../../tests/storages/before/",
 			Extension:    "JPG",
 			ExtLowerCase: "jpg",
 			FileName:     "example2.jpg",
@@ -48,6 +51,9 @@ func TestGetFileListsFromStoragesSuccess(t *testing.T) {
 
 	for i := 0; i < len(result); i++ {
 		if result[i] != expect[i] {
+			if result[i].Dir != expect[i].Dir {
+				t.Error("\n実際: ", result[i].Dir, "\n期待: ", expect[i].Dir)
+			}
 			if result[i].Extension != expect[i].Extension {
 				t.Error("\n実際: ", result[i].Extension, "\n期待: ", expect[i].Extension)
 			}

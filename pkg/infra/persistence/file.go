@@ -46,9 +46,11 @@ func convertToFile(dir string, f os.FileInfo) model.File {
 		name = ""
 	}
 	filename = name + "." + extLowerCase
-	path := strings.TrimRight(dir, "/") + "/" + filename
+	dir = strings.TrimRight(dir, "/") + "/"
+	path := dir + filename
 
 	return model.File{
+		Dir:          dir,
 		Extension:    ext,
 		ExtLowerCase: extLowerCase,
 		FileName:     filename,
