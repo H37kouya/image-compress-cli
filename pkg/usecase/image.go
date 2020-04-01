@@ -7,7 +7,7 @@ import (
 
 // ImageUseCase Imageに関するUseCase
 type ImageUseCase interface {
-	ResizeImages(width int) model.Files
+	ResizeImages(width int) (model.Files, error)
 }
 
 type imageUseCase struct {
@@ -24,7 +24,7 @@ func NewImageUseCase(fr repository.FileRepository, ir repository.ImageRepository
 }
 
 // ResizeImages 画像のリサイズをする
-func (iu imageUseCase) ResizeImages(width int) model.Files {
+func (iu imageUseCase) ResizeImages(width int) (model.Files, error) {
 	sizes := make([]int, 0, 7)
 	if width == 0 {
 		sizes = append(sizes, width)
@@ -32,7 +32,10 @@ func (iu imageUseCase) ResizeImages(width int) model.Files {
 		sizes = append(sizes, 80, 320, 480, 640, 960, 1200, 1800)
 	}
 
-	files := iu.fileRepository.GetFileListsFromStorages("./storages/before")
+	files, err := iu.fileRepository.GetFileListsFromStorages("./storages/before")
+	if err != nil {
+		return nil, err
+	}
 
 	for _, file := range files {
 
@@ -41,5 +44,5 @@ func (iu imageUseCase) ResizeImages(width int) model.Files {
 		}
 	}
 
-	return files
+	return files, nil
 }

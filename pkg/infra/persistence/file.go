@@ -18,9 +18,13 @@ func NewFilePersistence() repository.FileRepository {
 type filePersistence struct{}
 
 // GetFileListsFromStorages ファイルの一覧を作成
-func (fp filePersistence) GetFileListsFromStorages(dir string) model.Files {
+func (fp filePersistence) GetFileListsFromStorages(dir string) (model.Files, error) {
 	// file一覧を作成
-	fileinfos, _ := ioutil.ReadDir(dir)
+	fileinfos, err := ioutil.ReadDir(dir)
+	if err != nil {
+		return nil, err
+	}
+
 	// model.Files型に詰める
 	files := make([]model.File, 0)
 	for _, f := range fileinfos {
@@ -28,7 +32,7 @@ func (fp filePersistence) GetFileListsFromStorages(dir string) model.Files {
 		files = append(files, file)
 	}
 
-	return files
+	return files, nil
 }
 
 func convertToFile(dir string, f os.FileInfo) model.File {
