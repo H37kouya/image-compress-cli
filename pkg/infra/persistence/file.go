@@ -42,6 +42,9 @@ func convertToFile(dir string, f os.FileInfo) model.File {
 	ext := strings.TrimLeft(filepath.Ext(filename), ".")
 	extLowerCase := strings.ToLower(ext)
 	name := getFileNameWithoutExt(filename)
+	if name == "." { // .gitkeepのようなファイルを考慮
+		name = ""
+	}
 	filename = name + "." + extLowerCase
 	path := strings.TrimRight(dir, "/") + "/" + filename
 
