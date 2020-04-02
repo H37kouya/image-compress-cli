@@ -40,7 +40,7 @@ func (iu imageUseCase) ResizeImages(width int) (model.Files, error) {
 	for _, file := range files {
 
 		for _, size := range sizes {
-			iu.imageRepository.ResizeImage(file, "./storages/after/"+file.FileName, size, 70)
+			iu.imageRepository.ResizeImage(file, "./storages/after/", file.FileName, size, 70)
 		}
 	}
 
