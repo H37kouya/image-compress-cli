@@ -6,12 +6,24 @@ import (
 	"testing"
 )
 
-// TestGetFileListsFromStorages GetFileListsFromStoragesのテスト
-func TestGetFileListsFromStorages(t *testing.T) {
+// TestGetFileListsFromStorages GetFileListsFromStoragesの正常系テスト
+func TestGetFileListsFromStoragesSuccess(t *testing.T) {
 	fp := di.InjectFilePersistence()
-	result := fp.GetFileListsFromStorages("../../../tests/storages/before")
+	result, err := fp.GetFileListsFromStorages("../../../tests/storages/before")
+	if err != nil {
+		t.Fatalf("failed test %#v", err)
+	}
 	expect := model.Files{
 		model.File{
+			Dir:          "../../../tests/storages/before/",
+			Extension:    "gitkeep",
+			ExtLowerCase: "gitkeep",
+			FileName:     ".gitkeep",
+			Name:         "",
+			Path:         "../../../tests/storages/before/.gitkeep",
+		},
+		model.File{
+			Dir:          "../../../tests/storages/before/",
 			Extension:    "jpg",
 			ExtLowerCase: "jpg",
 			FileName:     "example1.jpg",
@@ -19,6 +31,7 @@ func TestGetFileListsFromStorages(t *testing.T) {
 			Path:         "../../../tests/storages/before/example1.jpg",
 		},
 		model.File{
+			Dir:          "../../../tests/storages/before/",
 			Extension:    "JPG",
 			ExtLowerCase: "jpg",
 			FileName:     "example2.jpg",
@@ -38,6 +51,9 @@ func TestGetFileListsFromStorages(t *testing.T) {
 
 	for i := 0; i < len(result); i++ {
 		if result[i] != expect[i] {
+			if result[i].Dir != expect[i].Dir {
+				t.Error("\n実際: ", result[i].Dir, "\n期待: ", expect[i].Dir)
+			}
 			if result[i].Extension != expect[i].Extension {
 				t.Error("\n実際: ", result[i].Extension, "\n期待: ", expect[i].Extension)
 			}
@@ -54,5 +70,17 @@ func TestGetFileListsFromStorages(t *testing.T) {
 				t.Error("\n実際: ", result[i].Path, "\n期待: ", expect[i].Path)
 			}
 		}
+	}
+}
+
+// TestGetFileListsFromStoragesFailed GetFileListsFromStoragesの異常系テスト
+func TestGetFileListsFromStoragesFailed(t *testing.T) {
+	fp := di.InjectFilePersistence()
+	result, err := fp.GetFileListsFromStorages("../../../tests/storages/nothing")
+	if err == nil {
+		t.Fatal("failed test")
+	}
+	if len(result) != 0 {
+		t.Fatal("failed test")
 	}
 }
