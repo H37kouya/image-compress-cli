@@ -1,8 +1,11 @@
 package usecase
 
 import (
-	"image-compress-cli/pkg/domain/model"
-	"image-compress-cli/pkg/domain/repository"
+	"strconv"
+
+	"github.com/H37kouya/image-compress-cli/pkg/config"
+	"github.com/H37kouya/image-compress-cli/pkg/domain/model"
+	"github.com/H37kouya/image-compress-cli/pkg/domain/repository"
 )
 
 // ImageUseCase Imageに関するUseCase
@@ -13,23 +16,30 @@ type ImageUseCase interface {
 type imageUseCase struct {
 	fileRepository  repository.FileRepository
 	imageRepository repository.ImageRepository
+	imageConfig     config.ImageConfig
 }
 
 // NewImageUseCase : Image データに関する UseCase を生成
-func NewImageUseCase(fr repository.FileRepository, ir repository.ImageRepository) ImageUseCase {
+func NewImageUseCase(fr repository.FileRepository, ir repository.ImageRepository, ic config.ImageConfig) ImageUseCase {
 	return &imageUseCase{
 		fileRepository:  fr,
 		imageRepository: ir,
+		imageConfig:     ic,
 	}
 }
 
 // ResizeImages 画像のリサイズをする
 func (iu imageUseCase) ResizeImages(width int) (model.Files, error) {
-	sizes := make([]int, 0, 7)
-	if width == 0 {
+	config := iu.imageConfig.LoadImageConfig()
+	conSizes := config.Images.Sizes
+	sizes := make([]int, 0, len(conSizes))
+
+	if width != 0 {
 		sizes = append(sizes, width)
 	} else {
-		sizes = append(sizes, 80, 320, 480, 640, 960, 1200, 1800)
+		for _, size := range conSizes {
+			sizes = append(sizes, size)
+		}
 	}
 
 	files, err := iu.fileRepository.GetFileListsFromStorages("./storages/before")
@@ -40,7 +50,7 @@ func (iu imageUseCase) ResizeImages(width int) (model.Files, error) {
 	for _, file := range files {
 
 		for _, size := range sizes {
-			iu.imageRepository.ResizeImage(file, "./storages/after/", file.FileName, size, 70)
+			iu.imageRepository.ResizeImage(file, "./storages/after/", strconv.Itoa(size)+"-"+file.FileName, size, 70)
 		}
 	}
 

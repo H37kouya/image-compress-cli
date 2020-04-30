@@ -1,4 +1,4 @@
-module image-compress-cli
+module github.com/H37kouya/image-compress-cli
 
 go 1.13
 
@@ -19,5 +19,5 @@ require (
 	golang.org/x/sys v0.0.0-20200321134203-328b4cd54aae // indirect
 	golang.org/x/text v0.3.2 // indirect
 	gopkg.in/ini.v1 v1.55.0 // indirect
-	gopkg.in/yaml.v2 v2.2.8 // indirect
+	gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c
 )

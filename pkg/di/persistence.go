@@ -1,8 +1,8 @@
 package di
 
 import (
-	"image-compress-cli/pkg/domain/repository"
-	"image-compress-cli/pkg/infra/persistence"
+	"github.com/H37kouya/image-compress-cli/pkg/domain/repository"
+	"github.com/H37kouya/image-compress-cli/pkg/infra/persistence"
 )
 
 // InjectFilePersistence FilePersistenceの依存性注入
