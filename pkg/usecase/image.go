@@ -1,8 +1,8 @@
 package usecase
 
 import (
-	"image-compress-cli/pkg/domain/model"
-	"image-compress-cli/pkg/domain/repository"
+	"github.com/H37kouya/image-compress-cli/pkg/domain/model"
+	"github.com/H37kouya/image-compress-cli/pkg/domain/repository"
 )
 
 // ImageUseCase Imageに関するUseCase

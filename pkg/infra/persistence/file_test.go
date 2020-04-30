@@ -1,9 +1,10 @@
 package persistence_test
 
 import (
-	"image-compress-cli/pkg/di"
-	"image-compress-cli/pkg/domain/model"
 	"testing"
+
+	"github.com/H37kouya/image-compress-cli/pkg/di"
+	"github.com/H37kouya/image-compress-cli/pkg/domain/model"
 )
 
 // TestGetFileListsFromStorages GetFileListsFromStoragesの正常系テスト

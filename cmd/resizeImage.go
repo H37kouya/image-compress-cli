@@ -16,7 +16,7 @@ limitations under the License.
 package cmd
 
 import (
-	"image-compress-cli/pkg/di"
+	"github.com/H37kouya/image-compress-cli/pkg/di"
 
 	"github.com/spf13/cobra"
 )

@@ -1,7 +1,7 @@
 package di
 
 import (
-	"image-compress-cli/pkg/usecase"
+	"github.com/H37kouya/image-compress-cli/pkg/usecase"
 )
 
 // InjectImageUseCase ImageUseCaseの依存性注入

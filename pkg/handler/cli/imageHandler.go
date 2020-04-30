@@ -1,7 +1,7 @@
 package cli
 
 import (
-	"image-compress-cli/pkg/usecase"
+	"github.com/H37kouya/image-compress-cli/pkg/usecase"
 
 	"github.com/spf13/cobra"
 )

@@ -1,6 +1,6 @@
 package main
 
-import "image-compress-cli/cmd"
+import "github.com/H37kouya/image-compress-cli/cmd"
 
 func main() {
 	cmd.Execute()

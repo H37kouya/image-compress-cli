@@ -1,6 +1,6 @@
 package repository
 
-import "image-compress-cli/pkg/domain/model"
+import "github.com/H37kouya/image-compress-cli/pkg/domain/model"
 
 // ImageRepository Image に関するリポジトリ
 type ImageRepository interface {

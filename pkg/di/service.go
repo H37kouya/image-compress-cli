@@ -1,7 +1,7 @@
 package di
 
 import (
-	"image-compress-cli/pkg/domain/service"
+	"github.com/H37kouya/image-compress-cli/pkg/domain/service"
 )
 
 // InjectFileService InjectFileServiceの依存性注入

@@ -1,9 +1,10 @@
 package persistence_test
 
 import (
-	"image-compress-cli/pkg/domain/model"
-	"image-compress-cli/pkg/infra/persistence"
 	"testing"
+
+	"github.com/H37kouya/image-compress-cli/pkg/domain/model"
+	"github.com/H37kouya/image-compress-cli/pkg/infra/persistence"
 )
 
 func TestResizeImageSuccess(t *testing.T) {

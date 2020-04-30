@@ -1,12 +1,13 @@
 package persistence
 
 import (
-	"image-compress-cli/pkg/domain/model"
-	"image-compress-cli/pkg/domain/repository"
 	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
+
+	"github.com/H37kouya/image-compress-cli/pkg/domain/model"
+	"github.com/H37kouya/image-compress-cli/pkg/domain/repository"
 )
 
 // NewFilePersistence : File データに関する Persistence を生成

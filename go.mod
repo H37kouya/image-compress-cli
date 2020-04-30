@@ -1,4 +1,4 @@
-module image-compress-cli
+module github.com/H37kouya/image-compress-cli
 
 go 1.13
 

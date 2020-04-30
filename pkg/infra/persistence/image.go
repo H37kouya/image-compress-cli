@@ -2,10 +2,11 @@ package persistence
 
 import (
 	"image"
-	"image-compress-cli/pkg/domain/model"
-	"image-compress-cli/pkg/domain/repository"
 	"os"
 	"strings"
+
+	"github.com/H37kouya/image-compress-cli/pkg/domain/model"
+	"github.com/H37kouya/image-compress-cli/pkg/domain/repository"
 
 	"github.com/disintegration/imaging"
 )
