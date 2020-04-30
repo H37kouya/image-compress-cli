@@ -9,5 +9,6 @@ func InjectImageUseCase() usecase.ImageUseCase {
 	return usecase.NewImageUseCase(
 		InjectFilePersistence(),
 		InjectImagePersistence(),
+		InjectImageConfig(),
 	)
 }
